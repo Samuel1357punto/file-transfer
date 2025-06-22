@@ -10,9 +10,6 @@ def boton_continuar():
     extension = entrada_extension.get()
     ruta_origen = entrada_ruta_origen.get()
     ruta_destino = entrada_ruta_destino.get()
-    print(extension)
-    print(ruta_origen)
-    print(ruta_destino)
     contador = 0
 
     for archivo in os.listdir(ruta_origen):
@@ -20,8 +17,8 @@ def boton_continuar():
             origen = os.path.join(ruta_origen, archivo)  # Ruta de cada archivo de las carpetas
             destino = os.path.join(ruta_destino, archivo)
             shutil.move(origen, destino)  # Mueve el archivo de una carpeta a otra
-            messagebox.showinfo("Éxito", "¡Archivos movidos correctamente!")
             contador += 1
+    messagebox.showinfo(f"¡{contador} archivos movidos correctamente!")
 
 def seleccionar_carpeta():
     ruta = filedialog.askdirectory(title="Selecciona la carpeta de origen")
@@ -64,31 +61,3 @@ entrada_extension.pack(pady=10)
 tk.Button(ventana, text="Trasnferir", command=boton_continuar).pack(pady=5)
 
 ventana.mainloop()
-
-
-"""
-
-extension = input("¿Cuál es la extensión de los archivos que quieres mover a esta carpeta?")
-nueva_carpeta = f"Archivos_{extension}" #Nombre de la carpeta que se creare
-
-if not os.path.exists(nueva_carpeta):
-    os.makedirs(nueva_carpeta) #Se crea la carpeta
-    print(f"Carpeta '{nueva_carpeta}' creada.")
-    
-
-ruta_origen = input("Escribe la ruta completa del archivo")
-carpeta_origen = "C:\\Users\\Sam\\PycharmProjects\\Automatizacion\\archivos" #Ruta de la carpeta de origen
-contador = 0
-
------------------------------------------------------------------------------------------------------------------------
-
-for archivo in os.listdir(carpeta_origen):
-    if archivo.endswith(".html"):
-        origen = os.path.join(carpeta_origen, archivo) #Ruta de cada archivo de las carpetas
-        destino = os.path.join(nueva_carpeta, archivo)
-        shutil.move(origen, destino) #Mueve el archivo de una carpeta a otra
-        contador += 1
-
-print (f"Se movieron {contador} archivos a la carpeta '{nueva_carpeta}'.")
-
-"""
